@@ -1,0 +1,14 @@
+services:
+  office2pdf:
+    image: codeinchq/office2pdf:latest
+    build:
+      context: .
+      target: office2pdf-dev
+      platforms:
+        #- linux/amd64
+        - linux/arm64
+    volumes:
+      - ./:/app/
+    ports:
+      - "3000:3000"
+    tty: true
