@@ -8,7 +8,6 @@
 
 import express from 'express';
 import multer from 'multer';
-import uniqid from 'uniqid';
 import {resolve} from "path";
 import {unlinkSync} from "node:fs";
 import {execSync} from "child_process";
