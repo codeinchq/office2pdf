@@ -19,28 +19,30 @@ const tempDir = 'temp';
 const app = express();
 const upload = multer({dest: tempDir});
 
+/**
+ * Converting the PDF file to images
+ */
 app.post('/convert', upload.single('file'), (req, res) => {
-    if (!req.file.filename) {
-        res.status(400);
-        res.send({error: 'No file uploaded'});
-        return;
-    }
-
-    // converting the PDF file to images
-    console.log(`Converting Office file ${req.file.originalname} to PDF`);
     try {
+        if (!req.file.filename) {
+            throw new Error('No file uploaded');
+        }
+        console.log(`Converting Office file "${req.file.originalname}" to PDF`);
         const outPath = `${req.file.path}.pdf`;
 
+        // converting the office file to PDF using LibreOffice
         execSync(
             `libreoffice `
             + `--headless `
             + `--convert-to pdf:writer_pdf_Export `
             + `--outdir ${tempDir} `
             + `${req.file.path}`,
+            {stdio: 'ignore'}
         );
 
+        // checking if the PDF file exists
         if (!existsSync(outPath)) {
-            throw 'Failed to convert the office file to PDF';
+            throw new Error('Failed to convert the office file to PDF');
         }
 
         // sending the images as a response
@@ -52,7 +54,7 @@ app.post('/convert', upload.single('file'), (req, res) => {
         });
     }
     catch (e) {
-        console.error(e.message);
+        console.error(`Failed to convert the office file to PDF: ${e.message}`);
         res.status(400);
         res.send({error: e.message});
         unlinkSync(req.file.path);
