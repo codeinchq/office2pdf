@@ -24,7 +24,7 @@ const upload = multer({dest: tempDir});
  */
 app.post('/convert', upload.single('file'), (req, res) => {
     try {
-        if (!req.file.filename) {
+        if (!req.file?.filename) {
             throw new Error('No file uploaded');
         }
         console.log(`Converting Office file "${req.file.originalname}" to PDF`);
