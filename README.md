@@ -17,17 +17,22 @@ All requests must by send in POST to the `/convert` endpoint with a `multipart/f
 
 The server returns `200` if the conversion was successful and the images are available in the response body. In case of error, the server returns a `400` status code with a JSON object containing the error message (format: `{error: string}`).
 
-## Example
+### Example
 
-### Step 1: run the container using Docker
+#### Step 1: run the container using Docker
 ```bash
 docker run -p "3000:3000" codeinchq/office2pdf 
 ```
 
-### Step 2: convert an Office file to PDF
+#### Step 2: convert an Office file to PDF
 ```bash
 curl -X POST -F "file=@/path/to/file.docx" http://localhost:3000/convert -o example.pdf
 ```
+
+## Client
+
+A PHP 8 client is available at on [GitHub](https://github.com/codeinchq/office2pdf-php-client) and [Packagist](https://packagist.org/packages/codeinc/office2pdf-client).
+
 
 ## License
 
