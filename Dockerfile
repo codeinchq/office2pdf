@@ -1,7 +1,7 @@
 ####################################################################################################
 # OFFICE2PDF
 ####################################################################################################
-FROM --platform=$TARGETPLATFORM node:21-alpine AS office2pdf
+FROM --platform=$TARGETPLATFORM node:lts-alpine AS office2pdf
 
 ENV PORT=3000
 ENV NODE_ENV=production
