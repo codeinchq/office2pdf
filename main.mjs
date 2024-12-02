@@ -20,6 +20,13 @@ const app = express();
 const upload = multer({dest: tempDir});
 
 /**
+ * Health check endpoint
+ */
+app.get('/health', (req, res) => {
+    res.send('ok');
+});
+
+/**
  * Converting the PDF file to images
  */
 app.post('/convert', upload.single('file'), (req, res) => {
