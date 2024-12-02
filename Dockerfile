@@ -3,8 +3,11 @@
 ####################################################################################################
 FROM --platform=$TARGETPLATFORM node:lts-alpine AS office2pdf
 
-ENV PORT=3000
-ENV NODE_ENV=production
+ARG PORT=3000
+ARG NODE_ENV=production
+
+ENV PORT=$PORT
+ENV NODE_ENV=$NODE_ENV
 WORKDIR /app
 
 # https://github.com/woahbase/alpine-libreoffice/blob/master/Dockerfile_x86_64
