@@ -17,6 +17,8 @@ All requests must by send in POST to the `/convert` endpoint with a `multipart/f
 
 The server returns `200` if the conversion was successful and the images are available in the response body. In case of error, the server returns a `400` status code with a JSON object containing the error message (format: `{error: string}`).
 
+A PHP 8 client is available at on [GitHub](https://github.com/codeinchq/office2pdf-php-client) and [Packagist](https://packagist.org/packages/codeinc/office2pdf-client).
+
 ### Example
 
 #### Step 1: run the container using Docker
