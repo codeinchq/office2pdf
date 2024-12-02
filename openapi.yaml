@@ -7,15 +7,6 @@ schemes:
   - https
 produces:
   - application/pdf
-x-google-backend:
-  address: https://office2pdf-v1-eu-938182106590.europe-west1.run.app
-  protocol: h2
-  path_translation: APPEND_PATH_TO_ADDRESS
-securityDefinitions:
-  api_key:
-    type: apiKey
-    name: x-api-key
-    in: header
 paths:
   /convert:
     post:
@@ -45,5 +36,15 @@ paths:
           description: "Bad request. The input file is invalid or missing."
         500:
           description: "Internal server error. Conversion failed."
-      security:
-        - api_key: [ ]
+  /health:
+    get:
+      operationId: healthCheck
+      summary: "Health check endpoint"
+      description: "Returns a plain text response indicating the service is running."
+      produces:
+        - text/plain
+      responses:
+        200:
+          description: "Service is running and returns 'ok'."
+          schema:
+            type: string
