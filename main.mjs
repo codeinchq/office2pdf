@@ -23,7 +23,10 @@ const upload = multer({dest: tempDir});
  * Health check endpoint
  */
 app.get('/health', (req, res) => {
-    res.send('ok');
+    res.json({
+        status: "up",
+        timestamp: new Date().toISOString()
+    });
 });
 
 /**
