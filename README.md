@@ -1,4 +1,4 @@
-# office2pdf
+# Code Inc.'s Office2Pdf
 
 [![Docker Image CI](https://github.com/codeinchq/office2pdf/actions/workflows/docker-image.yml/badge.svg)](https://github.com/codeinchq/office2pdf/actions/workflows/docker-image.yml)
 
@@ -34,7 +34,6 @@ curl -X POST -F "file=@/path/to/file.docx" http://localhost:3000/convert -o exam
 ## Client
 
 A PHP 8 client is available at on [GitHub](https://github.com/codeinchq/office2pdf-php-client) and [Packagist](https://packagist.org/packages/codeinc/office2pdf-client).
-
 
 ## License
 
