@@ -31,6 +31,13 @@ docker run -p "3000:3000" codeinchq/office2pdf
 curl -X POST -F "file=@/path/to/file.docx" http://localhost:3000/convert -o example.pdf
 ```
 
+### Health check
+
+A health check is available at the `/health` endpoint. The server returns a status code of `200` if the service is healthy, along with a JSON object: 
+```json
+{ "status": "up" }
+```
+
 ## Client
 
 A PHP 8 client is available at on [GitHub](https://github.com/codeinchq/office2pdf-php-client) and [Packagist](https://packagist.org/packages/codeinc/office2pdf-client).
